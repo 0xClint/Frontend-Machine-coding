@@ -1,0 +1,25 @@
+.container {
+}
+
+.title {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--col, 10), 1fr);
+  grid-template-rows: repeat(var(--row, 10), 1fr);
+}
+
+.grid .grid-item {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  user-select: none;
+}
+.grid .grid-item.selected {
+  background-color: aqua;
+}

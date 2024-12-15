@@ -1,0 +1,29 @@
+.transfer-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.transfer-list-container .center {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-container {
+  min-height: 200px;
+  width: 200px;
+  padding: 20px;
+  background-color: rgb(91, 207, 207);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+.list-item.check {
+  background: #0c7db1;
+}
+
+.list-item {
+  cursor: pointer;
+}

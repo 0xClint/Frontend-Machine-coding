@@ -1,0 +1,14 @@
+.rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+}
+.rating-container .rating-item {
+  color: gray;
+  cursor: pointer;
+}
+.rating-container .rating-item.selected {
+  color: black;
+}

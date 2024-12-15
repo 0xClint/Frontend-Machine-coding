@@ -1,0 +1,17 @@
+.gridboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  grid-template-rows: repeat(3, 1fr);
+}
+.gridboard .grid-item {
+
+  width: 50px;
+  height: 50px;
+  /* background-color: aliceblue; */
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

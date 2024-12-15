@@ -1,0 +1,22 @@
+.memory-board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  gap: 5px;
+  /* grid-template-columns: Re; */
+}
+
+.memory-board .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(207, 233, 255);
+  font-weight: bold;
+  color: rgb(129, 129, 129);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  user-select: none;
+}

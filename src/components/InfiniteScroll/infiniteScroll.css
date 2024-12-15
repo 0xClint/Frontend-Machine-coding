@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.img-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-content .center-id {
+  position: absolute;
+}

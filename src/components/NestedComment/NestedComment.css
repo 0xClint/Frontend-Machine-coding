@@ -1,0 +1,32 @@
+.nested-comment-container {
+  width: 400px;
+}
+.text-area-container {
+  display: flex;
+  gap: 10px;
+  /* flex-direction: column; */
+  background: #fdffef;
+}
+.text-area-container > textarea {
+  width: 100%;
+}
+
+.nested-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-container {
+  background: #fdffef;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: 1px solid rgb(133, 133, 133);
+}
+
+.comment-container .comment-btn-container {
+  display: flex;
+  gap: 10px;
+}

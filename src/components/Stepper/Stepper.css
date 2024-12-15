@@ -1,0 +1,57 @@
+.stepper {
+  width: 80%;
+}
+
+.stepper-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepper-item .stepper-title {
+  width: auto;
+  position: absolute;
+  top: 30px;
+  text-align: center;
+  /* transform: translateX(-50%); */
+  /* transform-origin: center; */
+}
+
+.progress-bar {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: blue;
+}
+
+.progress-bar .progress {
+  height: 100%;
+  width: var(--temp-width);
+  background-color: greenyellow;
+}
+.stepper-item .circle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+.stepper-item .circle.completed {
+  background-color: greenyellow;
+}
+.btn-cointainer {
+  display: flex;
+  justify-content: center;
+}

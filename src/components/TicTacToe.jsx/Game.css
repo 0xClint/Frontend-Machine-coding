@@ -1,0 +1,26 @@
+.container h2 {
+  text-align: center;
+}
+
+.container .status {
+  text-align: center;
+}
+
+/* .board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+} */
+
+.item {
+  width: 70px;
+  height: 70px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.item:hover {
+  background-color: rgb(255, 219, 171);
+}
