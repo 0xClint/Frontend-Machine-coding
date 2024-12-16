@@ -18,12 +18,12 @@ export const GridLight = () => {
   const [coloredList, setColoredList] = useState([]);
   const [totalNums, setTotalNums] = useState(() => {
     return configData.reduce((accumulator, item) => {
-      //   if (item.isDisabled) ans++;
       return accumulator - (item.isDisabled ? 1 : 0);
     }, configData.length);
   });
-//   console.log(totalNums);
+
   const handleSelect = (boxId) => {
+    if (coloredList.includes(boxId)) return;
     setGridBoard((prevState) => {
       return prevState.map((item) => {
         const data = item;
@@ -35,7 +35,7 @@ export const GridLight = () => {
     });
     setColoredList([...coloredList, boxId]);
   };
-  //   console.log(gridBoard);
+
   const reverseColor = async () => {
     const coloredData = coloredList;
     for (let i = 0; i < coloredData.length; i++) {
@@ -51,11 +51,12 @@ export const GridLight = () => {
             return data;
           });
         });
-      }, 400 * i);
+      }, 400 * (i + 1));
 
       //   await new Promise((res) => setTimeout(res, 1000));
     }
   };
+
   useEffect(() => {
     const checkComplete = () => {
       if (gridBoard.length != 0 && totalNums === coloredList.length) {
@@ -65,6 +66,7 @@ export const GridLight = () => {
     };
     checkComplete();
   }, [coloredList]);
+
   return (
     <div>
       <h2>GridLight</h2>

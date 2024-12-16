@@ -72,9 +72,9 @@ export const MemoryGame = () => {
   const isFlipped = (id) => id == first || id == second || solved.includes(id);
 
   const isSolved = (id) => solved.includes(id);
-  console.log("first -> " + first);
-  console.log("second -> " + second);
-  return (
+  // console.log("first -> " + first);
+  // console.log("second -> " + second);
+  return (  
     <div>
       <h2>Memory Game</h2>
       <div className="header-content">

@@ -50,7 +50,7 @@ export const AutoComplete = ({
     } finally {
       setLoader(false);
     }
-  }, [fetchSuggestions, text]);
+  }, [text]);
 
   const handleFetchSuggestionDeBounce = useCallback(
     myDebounce(handleFetchSuggestion, 300),

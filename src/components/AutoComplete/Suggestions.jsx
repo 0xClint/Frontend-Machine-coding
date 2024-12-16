@@ -2,11 +2,11 @@ import React from "react";
 import "./Suggestions";
 
 export const Suggestions = ({ data = [], onSelect, highlight }) => {
-  console.log(data);
+  // console.log(data);
 
   const gethighlightedWords = (text, highlight) => {
     const parts = text.split(new RegExp(`(${highlight})`, "gi"));
-
+    // console.log(parts);
     return (
       <span>
         {parts.map((item) =>
