@@ -16,6 +16,7 @@ import { InfiniteScroll } from "./components/InfiniteScroll/InfiniteScroll";
 import { NestedComment } from "./components/NestedComment/NestedComment";
 import { ScreenAdjust } from "./components/Throttling/ScreenAdjust";
 import { CountDown } from "./components/CountDown/CountDown";
+import { Virtualization } from "./components/Virtualization/Virtualization";
 // import { CustomModal } from "./components/CustomModal/CustomModal";
 // import { TransferList } from "./components/TransferContainer/TransferList";
 // import { Stepper } from "./components/Stepper/Stepper";
@@ -93,7 +94,6 @@ function App() {
       /> */}
 
       <InfiniteScroll />
-
       {/* <FileExplorer /> */}
 
       {/* <NestedComment /> */}
@@ -101,7 +101,7 @@ function App() {
       {/* <ScreenAdjust /> */}
 
       {/* <CountDown /> */}
-
+      {/* <Virtualization /> */}
       {/* <Stepper stepsConfig={CHECKOUT_STEPS} /> */}
     </div>
   );

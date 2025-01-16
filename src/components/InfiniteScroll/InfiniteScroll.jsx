@@ -1,74 +1,96 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import "./infiniteScroll.css";
+import React, { useEffect, useState } from "react";
 
-export const InfiniteScroll = () => {
-  const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [pageIdx, setPageIdx] = useState(1);
+const ItemPost = ({ data }) => {
+  const [loader, setLoader] = useState(true);
+  const { thumbnail, title } = data;
+  return (
+    <div
+      className="post-card"
+      style={{ display: "flex", flexDirection: "column" }}
+    >
+      {/* {} */}
+      <div style={{ width: "250px", height: "250px" }}>
+        {" "}
+        {loader && <span className="loader">Loading...</span>}
+        <img
+          src={thumbnail}
+          width={250}
+          style={{
+            border: "1px solid gray",
+            display: loader ? "none" : "block",
+          }}
+          onLoad={() => setLoader(false)}
+        />
+      </div>
+      <span style={{ textAlign: "center" }}>{title}</span>
+    </div>
+  );
+};
 
-  const loaderRef = useRef(null);
-
-  const fetchData = async (pageNo) => {
-    try {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/photos?_page=${pageNo}`
-      );
-      return await res.json();
-    } catch (error) {
-      console.log("Fetch error: ", error);
-      return [];
-    }
-  };
-
-  const loadData = useCallback(async () => {
-    // if (loader) return;
-    setLoader(true);
-
-    const res = await fetchData(pageIdx);
-    if (res.length === 0) {
-      setLoader(false);
-      return;
-    }
-
-    setData((prev) => [...prev, ...res]);
-    // console.log(res);
-    setLoader(false);
-  }, [pageIdx]);
-
-  useEffect(() => {
-    loadData();
-  }, [pageIdx]);
-
+const PostItems = ({ listData, setPageIdx }) => {
   useEffect(() => {
     const observer = new IntersectionObserver((params) => {
       if (params[0].isIntersecting) {
-        observer.unobserve(lastPost);
-        setPageIdx((prev) => prev + 1);
+        console.log("calling extra data!");
+        observer.unobserve(lastItem);
+        setPageIdx((pageIdx) => pageIdx + 1);
       }
     });
-    const lastPost = document.querySelector(".img-content:last-child");
-    if (!lastPost) return;
-    observer.observe(lastPost);
+    const lastItem = document.querySelector(".post-card:last-child");
+    if (lastItem) observer.observe(lastItem);
 
     return () => {
-      if (lastPost) observer.unobserve(lastPost);
+      if (lastItem) {
+        observer.unobserve(lastItem);
+      }
       observer.disconnect();
     };
-  }, [loader]);
-
-  console.log(pageIdx);
+  }, [listData, setPageIdx]);
 
   return (
-    <div className="container">
-      {data.map(({ thumbnailUrl, id }, index) => (
-        <div key={`${index}-${id}`} className="img-content">
-          <span className="center-id">{id}</span>
-          <img alt={`thumbnail-${id}`} src={thumbnailUrl} />
-        </div>
-      ))}
-      {/* <div ref={loaderRef} style={{ textAlign: "center", padding: "10px" }}>
-        {loader && <span>LOADING...</span>}
-      </div> */}
+    <div
+      className="color-container"
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "2rem",
+      }}
+    >
+      {listData.map((data) => {
+        return <ItemPost data={data} key={data.id} />;
+      })}
+    </div>
+  );
+};
+
+const LIMIT = 10;
+export const InfiniteScroll = () => {
+  const [data, setData] = useState([]);
+  const [pageIdx, setpageIdx] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch(
+        `https://dummyjson.com/products?limit=${LIMIT}&skip=${LIMIT * pageIdx}`
+      );
+      const result = await res.json();
+      setData((prevState) => [...prevState, ...result.products]);
+    } catch (error) {
+      setData([]);
+      return new Error("something went wrong!");
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [pageIdx]);
+
+  return (
+    <div>
+      <h2>infinte Scroll</h2>
+
+      <PostItems listData={data} setPageIdx={setpageIdx} />
     </div>
   );
 };
