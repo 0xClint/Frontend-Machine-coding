@@ -1,0 +1,17 @@
+.selectable-grid {
+}
+
+.selectable-grid .grid-container {
+  display: grid;
+}
+
+.selectable-grid .grid-container .selectable-grid-item {
+  width: 50px;
+  height: 50px;
+  border: solid 1px black;
+  user-select: none;
+}
+.selectable-grid .grid-container .selectable-grid-item.active {
+  cursor: pointer;
+  background-color: aqua;
+}

@@ -1,0 +1,19 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 200px;
+  text-align: center;
+}
+.post-container .post-img-container {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.post-container .post-img-container img {
+  width: 100%;
+  height: 100%;
+}

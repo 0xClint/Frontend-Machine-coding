@@ -1,0 +1,26 @@
+.dragandDrop-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.dragandDrop-container .dragandDrop-status-container {
+  min-width: 200px;
+  min-height: 200px;
+  text-align: center;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.dragandDrop-container .dragandDrop-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dragandDrop-container .dragandDrop-content .dragandDrop-content-item {
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+.dragandDrop-container .dragandDrop-content .dragandDrop-content-item:hover {
+    background-color: aliceblue;
+}

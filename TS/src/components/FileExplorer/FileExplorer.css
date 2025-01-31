@@ -1,0 +1,27 @@
+.file-explorer {
+}
+
+.file-explorer .file-explorer-container {
+}
+
+.file-explorer .file-explorer-container .file {
+  cursor: pointer;
+}
+
+.file-explorer .file-explorer-container .file .folder-header {
+  border-radius: 3px;
+  width: 350px;
+  padding: 12px;
+  background-color: aliceblue;
+  border: solid 1px rgb(196, 228, 255);
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-explorer .file-explorer-container .file .file-header {
+  /* background-color: #f8fcff; */
+  width: 350px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}

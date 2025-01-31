@@ -1,0 +1,12 @@
+.tictactoe-board {
+  display: grid;
+  gap:0
+}
+
+.tictactoe-board .tictactoe-cell {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  user-select: none;
+  cursor: pointer;
+}

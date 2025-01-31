@@ -1,0 +1,12 @@
+.suggestion-item {
+  padding: 6px;
+  cursor: pointer;
+}
+.suggestion-item:hover {
+  background-color: aliceblue;
+}
+
+.suggestion-item .suggestion-item-part.active {
+  font-weight: 600;
+  color: rgb(2, 2, 138);
+}

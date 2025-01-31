@@ -1,0 +1,20 @@
+.memory-board-container {
+  display: grid;
+  gap: 8px;
+}
+
+.memory-board-container .memory-board-cell {
+  height: 50px;
+  width: 50px;
+  background-color: #3670fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: aliceblue;
+  user-select: none;
+}
+
+.memory-board-container .memory-board-cell:hover {
+  transform: scale(1.02);
+}

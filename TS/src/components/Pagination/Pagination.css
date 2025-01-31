@@ -1,0 +1,22 @@
+.pagination {
+  width: 90%;
+}
+
+.pagination .posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.pagination .pagination-container {
+    margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+.pagination .pagination-container .page-number-btn {
+  width: 30px;
+  height: 30px;
+  /* background-color: aliceblue; */
+}

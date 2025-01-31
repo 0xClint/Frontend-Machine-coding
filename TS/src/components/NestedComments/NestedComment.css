@@ -1,0 +1,22 @@
+.nested-comment {
+  /* width: 300px; */
+  margin-bottom: 3rem;
+}
+.nested-comment .comment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nested-comment .textboard {
+  padding: 5px 5px 5px 0;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.nested-comment .textboard textarea {
+  width: 100%;
+}
+.nested-comment button {
+  width: 100px;
+}

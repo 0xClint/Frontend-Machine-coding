@@ -1,0 +1,17 @@
+.comment {
+  background-color: beige;
+  padding: 1rem;
+}
+
+.comment .content {
+  padding: 5px 5px 5px 0;
+  margin-bottom: 10px;
+}
+.comment .comment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.comment .replies {
+  margin-top: 5px;
+}

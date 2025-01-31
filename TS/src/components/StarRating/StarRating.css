@@ -1,0 +1,10 @@
+.star-rating-container {
+  font-size: 3rem;
+  user-select: none;
+}
+
+.star-rating-container .star-item {
+    cursor: pointer;
+    color: #d3bd41;
+
+}

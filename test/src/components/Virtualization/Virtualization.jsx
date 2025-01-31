@@ -42,7 +42,7 @@ export const Virtualization = ({
         height: windowHeight,
         width: windowWidth,
         position: "relative",
-        overflow: "auto",
+        overflow: "scroll",
       }}
       onScroll={handleScroll}
     >

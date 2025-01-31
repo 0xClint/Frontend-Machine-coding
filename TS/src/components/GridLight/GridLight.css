@@ -1,0 +1,16 @@
+.gridlight {
+}
+
+.gridlight .gridlight-container {
+  display: grid;
+  gap: 10px;
+}
+
+.gridlight .gridlight-container .gridlight-item {
+  width: 50px;
+  height: 50px;
+  border: solid 1px black;
+  user-select: none;
+background-color: #00f0a0;
+  cursor: pointer;
+}
