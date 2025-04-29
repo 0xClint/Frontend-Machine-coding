@@ -31,6 +31,7 @@ export default function InfiniteScroll() {
   }, [pageIdx]);
 
   useEffect(() => {
+    const lastItem = document.querySelector(".product-content:last-child");
     const observer = new IntersectionObserver(
       (params) => {
         const { isIntersecting } = params[0];
@@ -43,7 +44,6 @@ export default function InfiniteScroll() {
       { threshold: 0.5 }
     );
 
-    const lastItem = document.querySelector(".product-content:last-child");
     if (lastItem) observer.observe(lastItem);
 
     return () => {

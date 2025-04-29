@@ -25,7 +25,9 @@ export default function DropDown2({
   const popupRef = useRef<any>(null);
 
   const handleSelect = (event: any) => {
+    console.log(event);
     const value = event.target.getAttribute("data-value");
+    console.log(value);
     setValue(value);
     setExtend(!isExtend);
     onSelect(value);
@@ -53,6 +55,7 @@ export default function DropDown2({
     document.addEventListener("click", dropDownPopup);
     return () => document.removeEventListener("click", dropDownPopup);
   }, []);
+
   return (
     <div className="dropdown">
       <h2>DropDown2</h2>

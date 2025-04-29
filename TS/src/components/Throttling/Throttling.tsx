@@ -12,7 +12,7 @@ const useThrottle = (value: any, delay: number = 1000) => {
 
       setTimeout(() => (flagRef.current = true), delay);
 
-      //   return () => clearTimeout(timeout);
+      // return () => clearTimeout(tm);
     }
   }, [value, delay]);
   return throttleValue;
