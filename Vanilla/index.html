@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Countdown Timer</h1>
+    <div class="timer_container">
+      <div class="digit_container">
+        <input type="text" class="hour" placeholder="HH" /><span>:</span>
+        <input type="text" class="minute" placeholder="MM" /><span>:</span>
+        <input type="text" class="second" placeholder="SS" />
+      </div>
+      <div class="btn_container">
+        <button class="btn start">Start</button>
+        <button class="btn pause" style="display: none">Pause</button>
+        <button class="btn lap" style="display: none">lap</button>
+        <button class="btn reset">Reset</button>
+      </div>
+      <ul class="lap_list"></ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

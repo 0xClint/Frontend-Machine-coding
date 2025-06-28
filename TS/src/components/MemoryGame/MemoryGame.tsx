@@ -59,7 +59,7 @@ export default function MemoryGame() {
       return;
     }
 
-    setTimeout(() => {
+    setTimeout(() => { 
       setFirst(-1);
       setSecond(-1);
     }, 1000);

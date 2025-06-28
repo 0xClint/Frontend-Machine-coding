@@ -17,6 +17,8 @@ import TicTacToe from "./components/TicTacToe/TicTacToe";
 import InfiniteScroll from "./components/InfiniteScroll/InfiniteScroll";
 import FileExplorer from "./components/FileExplorer/FileExplorer";
 import DropDown2 from "./components/DropDown2/DropDown2";
+import CheckBoxStatus from "./components/CheckBoxStatus/CheckBoxStatus";
+import CountDown from "./components/CountDown/CountDown";
 
 function App() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -58,7 +60,7 @@ function App() {
         {/* <LazyLoading /> */}
         {/* <MemoryGame /> */}
         {/* <StarRating /> */}
-        <NestedComment />
+        {/* <NestedComment /> */}
         {/* <Pagination /> */}
         {/* <AutoComplete /> */}
         {/* <SelectableGrid /> */}
@@ -69,6 +71,8 @@ function App() {
         </> */}
         {/* <TicTacToe /> */}
         {/* <FileExplorer /> */}
+        {/* <CheckBoxStatus /> */}
+        <CountDown />
 
         {/* <InfiniteScroll /> */}
       </div>
