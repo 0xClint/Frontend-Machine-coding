@@ -1,100 +1,133 @@
-import { useEffect, useRef, useState } from "react";
-import "./DropDown2.css";
+import { useEffect, useMemo, useRef, useState } from "react";
+import "./DropDown.css";
+import type { DropDownItems } from "./DropDown.type";
 
-interface IDropDown {
-  list: any[];
-  onSelect: (item: string) => void;
-  placeholder: string;
+interface DropDownProps {
+  placeholder?: string;
+  list: DropDownItems[];
+  onSelect?: (item: DropDownItems) => void;
   windowHeight?: number;
   itemHeight?: number;
 }
-export default function DropDown2({
+
+export default function DropDown({
+  placeholder = "Select Option",
   list,
-  onSelect = () => {},
-  placeholder = "Select Options",
-  windowHeight = 300,
+  windowHeight = 100,
   itemHeight = 30,
-}: IDropDown) {
-  const [isExtend, setExtend] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  onSelect = () => {},
+}: DropDownProps) {
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState<DropDownItems | null>(null);
   const [startIndex, setStartIndex] = useState<number>(0);
   const [endIndex, setEndIndex] = useState<number>(
     Math.floor(windowHeight / itemHeight)
   );
-
   const popupRef = useRef<any>(null);
 
-  const handleSelect = (event: any) => {
-    console.log(event);
-    const value = event.target.getAttribute("data-value");
-    console.log(value);
-    setValue(value);
-    setExtend(!isExtend);
-    onSelect(value);
+  const handleSelect = (event: React.MouseEvent<HTMLUListElement>) => {
+    const target = event.target as HTMLElement;
+
+    if (target.tagName !== "LI") return;
+
+    const selectedId = target.getAttribute("data-id");
+    const selectedValue = target.getAttribute("data-value");
+    const selectedLabel = target.getAttribute("data-label");
+
+    if (!selectedId || !selectedValue || !selectedLabel) return;
+
+    const selectedData = {
+      id: selectedId,
+      value: selectedValue,
+      label: selectedLabel,
+    };
+    setSelected(selectedData);
+    setOpen(false);
+    onSelect(selectedData);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLUListElement>) => {
+    if (event.key === "Enter") handleSelect(event as any);
   };
 
   const handleScroll = (event: any) => {
     const { scrollTop } = event.target;
 
     const newStartIndex = Math.floor(scrollTop / itemHeight);
-
+    // const newEndIndex = newStartIndex + Math.floor(windowHeight / itemHeight);
     setStartIndex(newStartIndex);
-    setEndIndex(newStartIndex + Math.floor(windowHeight / itemHeight));
+    setEndIndex(startIndex + Math.floor(windowHeight / itemHeight));
   };
 
-  const handleKeyDown = (event: any) => {
-    if (event.key === "Enter" || event.key === " ") handleSelect(event);
-  };
+  const renderList = useMemo(
+    () => list.slice(startIndex, endIndex),
+    [startIndex, endIndex, handleScroll]
+  );
 
   useEffect(() => {
-    const dropDownPopup = (event: any) => {
+    const dropDownPopup = (event: MouseEvent) => {
       if (popupRef.current && !popupRef.current?.contains(event.target))
-        setExtend(false);
+        setOpen(false);
     };
 
     document.addEventListener("click", dropDownPopup);
     return () => document.removeEventListener("click", dropDownPopup);
   }, []);
-
   return (
-    <div className="dropdown">
-      <h2>DropDown2</h2>
-      <div className="dropdown-container">
+    <div>
+      <h1>DropDown</h1>
+      <div
+        className="dropdown-container"
+        style={{ position: "relative", width: 250 }}
+      >
         <button
           className="dropdown-header"
           ref={popupRef}
-          onClick={() => setExtend(!isExtend)}
+          onClick={() => setOpen(!isOpen)}
         >
-          {value || placeholder}
+          {list.length > 0
+            ? selected
+              ? selected?.label
+              : placeholder
+            : "NO List item"}
         </button>
-        <ul
-          className={`list-container ${isExtend && "active"}`}
-          style={{
-            height: windowHeight - 50,
-            overflowY: "scroll",
-          }}
-          onScroll={handleScroll}
-          onClick={handleSelect}
-          onKeyDown={handleKeyDown}
-        >
-          <div style={{ height: list.length * itemHeight }}>
-            {list.slice(startIndex, endIndex).map(({ id, content }, index) => (
-              <li
-                key={id}
-                tabIndex={0}
-                data-value={content}
-                className={`list-item  ${value === content && "selected"}`}
-                style={{
-                  transform: `translateY(${
-                    (startIndex + index) * itemHeight
-                  }px)`,
-                }}
-              >
-                {content}
-              </li>
-            ))}
-          </div>
-        </ul>
+        {/* UX Issue using logical rendering */}
+        {/* {isOpen && ( */}
+        {list.length > 0 && (
+          <ul
+            className={`dropdown-list ${isOpen && "extended"}`}
+            onClick={handleSelect}
+            onKeyDown={handleKeyDown}
+            onScroll={handleScroll}
+            style={{
+              height: Math.min(
+                windowHeight - Math.floor(windowHeight * 0.2),
+                itemHeight * list.length
+              ),
+              overflowY: "auto",
+            }}
+          >
+            <div style={{ height: itemHeight * list.length }}>
+              {renderList.map(({ id, value, label }, index) => (
+                <li
+                  className={`list-items ${
+                    value == selected?.value && "selected"
+                  }`}
+                  tabIndex={0}
+                  key={id}
+                  data-value={value}
+                  data-label={label}
+                  data-id={id}
+                  style={{
+                    top: Math.floor((startIndex + index) * itemHeight),
+                  }}
+                >
+                  {label}
+                </li>
+              ))}
+            </div>
+          </ul>
+        )}
       </div>
     </div>
   );
